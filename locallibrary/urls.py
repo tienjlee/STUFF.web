@@ -14,10 +14,10 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import url
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    url('admin/', admin.site.urls),
 ]
 
 
@@ -29,12 +29,12 @@ from django.urls import include
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    url('admin/', admin.site.urls),
 ]
 
 
 urlpatterns += [
-    path('catalog/', include('catalog.urls')),
+    url('catalog/', include('catalog.urls')),
 ]
 
 
@@ -49,12 +49,12 @@ urlpatterns+= static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 #Add URL maps to redirect the base URL to our application
 from django.views.generic import RedirectView
 urlpatterns += [
-    path('', RedirectView.as_view(url='/catalog/', permanent=True)),
+    url('', RedirectView.as_view(url='/catalog/', permanent=True)),
 ]
 
 
 
 #Add Django site authentication urls (for login, logout, password management)
 urlpatterns += [
-    path('accounts/', include('django.contrib.auth.urls')),
+    url('accounts/', include('django.contrib.auth.urls')),
 ]
